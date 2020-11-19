@@ -1,24 +1,24 @@
 function load() {
-tour = JSON.parse(localStorage.getItem('listTour'));
+  tour = JSON.parse(localStorage.getItem("listTour"));
 }
-if (localStorage.getItem('listTour') != null) {
-load();
+if (localStorage.getItem("listTour") != null) {
+  load();
 }
 
-    function functionBooking(){
-        var listTour = "";
-        for ( i in tour) {
-        var data =JSON.parse(JSON.stringify(tour[i])) ;
-        listTour += `
+function functionBooking() {
+  var listTour = "";
+  for (i in tour) {
+    var data = JSON.parse(JSON.stringify(tour[i]));
+    listTour += `
             <div class='col-md-4 col-sm-6 single'>
                 <div class='product'>
-                    <a href='detail.html'>
+                    <a href="detail.html?tour_id=${tour[i].id}">
                         <img class='img-fluid' src="${tour[i].img}">
                     </a>
                     
                     <div class='text-center mt-3'>
                         <h3>            
-                            <a href='details.php?pro_id=$pro_id'>
+                            <a>
                                 ${tour[i].name}
                             </a>
                         </h3>
@@ -38,12 +38,11 @@ load();
                 </div>        
             </div>
         `;
-        document.getElementById("showtour").innerHTML = listTour ;
-    }
-    
+    document.getElementById("showtour").innerHTML = listTour;
+  }
 }
 function order(id) {
-    const tourBooking = tour.filter(data => data.id === id)
-    localStorage.setItem('tourBooking', JSON.stringify(tourBooking));
-    alert("Đã thêm tour! Vui lòng kiểm tra giỏ hàng!")
+  const tourBooking = tour.filter((data) => data.id === id);
+  localStorage.setItem("tourBooking", JSON.stringify(tourBooking));
+  alert("Đã thêm tour! Vui lòng kiểm tra giỏ hàng!");
 }
